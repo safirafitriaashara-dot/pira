@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Safira Fitria Ashara</title>
+    <style>
+        /* --- VARIABEL WARNA HIJAU PASTEL --- */
+        :root {
+            --primary-green: #2ed3af;      /* Hijau utama (tombol/aksen) */
+            --dark-green: #078b6f;         /* Hijau gelap (teks heading) */
+            --pastel-bg: #e8f5e9;          /* Latar belakang hijau muda */
+            --pastel-card: #f1f8e9;        /* Warna kartu */
+            --text-main: #37474f;          /* Warna teks utama */
+            --white: #ffffff;
+            --accent-border: #14997c;      /* Warna border */
+        }
+
+        /* --- CSS RESET & DASAR --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--white);
+            color: var(--text-main);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- HEADER & NAVIGASI --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(146, 238, 218, 0.1); /* Shadow hijau lembut */
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--dark-green);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+
+        /* --- HERO SECTION (TENTANG SAYA) --- */
+        #about {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--pastel-bg) 0%, #c8e6c9 100%);
+            padding-top: 60px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: var(--dark-green);
+        }
+
+        .hero-content .tagline {
+            font-size: 1.2rem;
+            color: #78d1be;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid var(--white);
+            box-shadow: 0 4px 15px rgba(5, 148, 141, 0.2);
+            background-color: #cfd8dc; 
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 12px 35px;
+            border-radius: 25px; /* Bentuk pill lembut */
+            margin-top: 20px;
+            transition: all 0.3s;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(102, 187, 106, 0.2);
+        }
+
+        .btn:hover {
+            background: var(--dark-green);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(46, 125, 50, 0.3);
+        }
+
+        /* --- SECTION UMUM --- */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: var(--dark-green);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-green);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- KEAHLIAN (SKILLS) --- */
+        #skills {
+            background-color: var(--white);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-card {
+            background: var(--pastel-card);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--accent-border);
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-card h3 {
+            margin-bottom: 10px;
+            color: var(--dark-green);
+        }
+
+        .skill-card p {
+            font-size: 0.9rem;
+            color: #546e7a;
+        }
+
+        /* --- PROYEK --- */
+        #projects {
+            background-color: var(--pastel-bg);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            border: 1px solid #e0e0e0;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(46, 125, 50, 0.1);
+        }
+
+        .project-img {
+            background-color: #cfd8dc;
+            border-bottom: 3px solid var(--accent-border);
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-info h3 {
+            margin-bottom: 10px;
+            color: var(--dark-green);
+        }
+
+        .project-info p {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .tags span {
+            background: #e8f5e9;
+            color: var(--dark-green);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            border: 1px solid var(--accent-border);
+        }
+
+        /* --- KONTAK --- */
+        #contact {
+            background-color: var(--dark-green);
+            color: var(--white);
+            text-align: center;
+        }
+
+        #contact .section-title {
+            color: var(--white);
+        }
+
+        #contact .section-title::after {
+            background: var(--primary-green);
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .contact-info a {
+            color: #c8e6c9;
+            font-weight: bold;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .social-links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* --- TOMBOL GITHUB --- */
+        .btn-github {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--white);
+            color: var(--dark-green);
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .btn-github:hover {
+            background: #f1f8e9;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+
+        /* SVG Icon Github */
+        .github-icon {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #2c6856;
+            color: #a5d6a7;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 600px) {
+            .hero-content h1 { font-size: 2rem; }
+            .nav-links { gap: 10px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">Portofolio Saya</div>
+            <ul class="nav-links">
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#skills">Keahlian</a></li>
+                <li><a href="#projects">Proyek</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Section: Tentang Saya -->
+    <section id="about">
+        <div class="container hero-content">
+            <!-- Ganti src dengan link foto kamu -->
+            <img src="aku.jpeg.jpeg" alt="Foto Profil" class="profile-photo">
+            <h1>Halo, perkenalkan saya Safira Fitria Ashara</h1>
+            <p class="tagline">Junior Web Developer | Pejuang Kode | Pecinta Teknologi</p>
+            <p>Saya adalah seorang pemula yang antusias dalam dunia pemrograman. Saat ini saya sedang fokus mempelajari pengembangan web dan mencari peluang untuk belajar lebih banyak melalui proyek nyata.</p>
+            <a href="#projects" class="btn">Lihat Karya Saya</a>
+        </div>
+    </section>
+
+    <!-- Section: Keahlian -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Keahlian</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>HTML & CSS</h3>
+                    <p>Mampu membuat struktur website yang rapi dan mendesain tampilan yang responsif dengan sentuhan warna lembut.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>JavaScript</h3>
+                    <p>Sedang mempelajari dasar-dasar logika pemrograman, dan membuat website interaktif.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Git & Github</h3>
+                    <p>Menggunakan version control untuk mengelola kode dan kolaborasi dasar di platform GitHub.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Proyek -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Proyek</h2>
+            <div class="projects-grid">
+                <!-- Proyek 1 -->
+                <div class="project-card">
+                    <div class="project-img" alt="Proyek 1"></div>
+                    <div class="project-info">
+                        <h3>Aplikasi Kasir</h3>
+                        <p>Membuat aplikasi web toko sembako menggunakan HTML, CSS styling, dan PHP.</p>
+                        <div class="tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>PHP</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Proyek 2 -->
+                <div class="project-card">
+                    <div class="project-img" alt="Proyek 2"></div>
+                    <div class="project-info">
+                        <h3>Simple Calculator</h3>
+                        <p>Kalkulator sederhana dengan fungsi tambah, kurang, kali, dan bagi menggunakan Python.</p>
+                        <div class="tags">
+                            <span>Python</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Kontak -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Hubungi Saya</h2>
+            <div class="contact-info">
+                <p>Saya terbuka untuk diskusi, kolaborasi, atau sekedar ngobrol tentang kode.</p>
+                <p>Email: <a href="mailto:emailkamu@example.com">safirafitriaashara@example.com</a></p>
+                <p>Lokasi: Nganjuk, Indonesia</p>
+            </div>
+            
+            <div class="social-links">
+                <!-- Tombol GitHub -->
+                <a href="https://github.com/usernamekamu" target="_blank" class="btn-github">
+                    <!-- SVG Icon GitHub -->
+                    <svg class="github-icon" viewBox="0 0 24 24">
+                        <path d="M12 0.297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385 0.6 0.113 0.82-0.258 0.82-0.577 0-0.285-0.01-1.04-0.015-2.04-3.338 0.724-4.042-1.61-4.042-1.61-0.546-1.385-1.335-1.755-1.335-1.755-1.087-0.744 0.083-0.729 0.083-0.729 1.205 0.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495 0.998 0.108-0.776 0.417-1.305 0.76-1.605-2.665-0.3-5.466-1.332-5.466-5.93 0-1.31 0.465-2.38 1.235-3.22-0.135-0.303-0.54-1.523 0.105-3.176 0 0 1.005-0.322 3.3 1.23 0.96-0.267 1.98-0.399 3-0.404 1.02 0.005 2.04 0.138 3 0.404 2.28-1.552 3.285-1.23 3.285-1.23 0.645 1.653 0.24 2.873 0.12 3.176 0.765 0.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92 0.42 0.36 0.81 1.096 0.81 2.22 0 1.605-0.015 2.896-0.015 3.286 0 0.315 0.21 0.69 0.825 0.57 4.801-1.582 8.236-6.082 8.236-11.382 0-6.627-5.373-12-12-12"/>
+                    </svg>
+                    GitHub Profile
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 semangat mempelajari hal-hal baru.</p>
+    </footer>
+
+    <!-- Script Smooth Scroll -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
